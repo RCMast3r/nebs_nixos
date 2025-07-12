@@ -60,6 +60,7 @@
 
   environment.systemPackages = with pkgs; [
     btrfs-progs
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -96,5 +97,23 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  fileSystems."/mnt/data" = {
+    device = "UUID=65f2c848-46e4-4855-b21d-e96619a5b6e2";
+    fsType = "btrfs";
+    options = [ "compress=zstd" ]; # Optional Btrfs options
+  };
+  systemd.tmpfiles.rules = [
+    "d /mnt/data 0755 neb neb -"
+  ];
+  
+  programs.git = {
+    enable = true;
+    config = {
+      user.email = "rcmast3r1@gmail.com";
+      user.name = "Ben Hall";
+    };
+  };
+  
 }
