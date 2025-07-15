@@ -104,9 +104,18 @@
     fsType = "btrfs";
     options = [ "compress=zstd" ]; # Optional Btrfs options
   };
-  systemd.tmpfiles.rules = [
-    "d /mnt/data 0755 neb neb -"
-  ];
+
+  systemd.services."fix-permissions-mnt-data" = {
+    wantedBy = [ "local-fs.target" ];
+    after = [ "mnt-data.mount" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = [
+        "/run/current-system/sw/bin/chown neb:users /mnt/data"
+        "/run/current-system/sw/bin/chmod 755 /mnt/data"
+      ];
+    };
+  };
   
   programs.git = {
     enable = true;
