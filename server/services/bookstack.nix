@@ -18,6 +18,7 @@
         name = "bookstack";
         createLocally = true;
       };
+      appUrl = "https://wiki.yeet"
     };
   };
 }
