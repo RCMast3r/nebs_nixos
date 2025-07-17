@@ -54,7 +54,7 @@
   users.users.neb = {
     isNormalUser = true;
     description = "neb";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -125,6 +125,10 @@
       user.email = "rcmast3r1@gmail.com";
       user.name = "Ben Hall";
     };
+  };
+
+  virtualisation.docker = {
+    enable = true;
   };
   
 }
