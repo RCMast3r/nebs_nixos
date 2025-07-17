@@ -26,7 +26,7 @@
     # "DB_PASS" = "deleteme";
     environmentFiles = [ config.age.secrets.nebs-bs-env-file.path ];
     volumes = [
-      "/replaceme:/config:rw"
+      "/mnt/data/bookstack_data:/config:rw"
     ];
     ports = [
       "6875:80/tcp"
@@ -73,7 +73,7 @@
     # "MYSQL_PASSWORD" = "deleteme";
     environmentFiles = [ config.age.secrets.nebs-bs-env-file.path ];
     volumes = [
-      "/replaceme:/config:rw"
+      "/mnt/data/bookstack_db:/config:rw"
     ];
     log-driver = "journald";
     extraOptions = [
