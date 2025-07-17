@@ -13,7 +13,7 @@
   virtualisation.oci-containers.containers."bookstack" = {
     image = "lscr.io/linuxserver/bookstack";
     environment = {
-      "APP_URL" = "https://wiki.yeet";
+      "APP_URL" = "http://wiki.yeet";
       "DB_DATABASE" = "bookstackapp";
       "DB_HOST" = "bookstack_db";
       "DB_PORT" = "3306";
