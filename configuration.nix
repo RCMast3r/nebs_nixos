@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  age.secrets.nebs-bookstack-env-file.file = ./secrets/nebs-bookstack-env-file.age;
+  age.secrets.nebs-bs-file.file = ./secrets/nebs-bs-env-file.age;
  
   
   
