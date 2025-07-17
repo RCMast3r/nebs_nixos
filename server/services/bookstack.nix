@@ -9,8 +9,9 @@
   config = lib.mkIf config.nebs-bookstack.enable {
     services.bookstack = {
       hostname = "wiki.yeet";
-      dataDir = "/mnt/data/bookstack";
       enable = true;
+      appURL = "https://wiki.yeet";
+      appKeyFile = config.age.secrets.nebs-bookstack-key.path;
 
       database = {
         user = "bookstack";
@@ -18,7 +19,7 @@
         name = "bookstack";
         createLocally = true;
       };
-      appUrl = "https://wiki.yeet"
+      
     };
   };
 }
