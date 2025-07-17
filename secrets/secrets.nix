@@ -5,5 +5,5 @@ let
 in 
 {
   "nebs_ssh_key.age".publicKeys = users;
-  "nebs-bs-env-file.age".publicKeys = users;
+  "nebs-bs-env-file3.age".publicKeys = users;
 }

@@ -24,7 +24,7 @@
     
     # "DB_USER" = "deleteme";
     # "DB_PASS" = "deleteme";
-    environmentFiles = [ config.age.secrets.nebs-bs-env-file.path ];
+    environmentFiles = [ config.age.secrets.nebs-bs-env-file3.path ];
     volumes = [
       "/mnt/data/bookstack_data:/config:rw"
     ];
@@ -71,7 +71,7 @@
     # "MYSQL_ROOT_PASSWORD" = "deleteme";
     # "MYSQL_USER" = "deleteme";
     # "MYSQL_PASSWORD" = "deleteme";
-    environmentFiles = [ config.age.secrets.nebs-bs-env-file.path ];
+    environmentFiles = [ config.age.secrets.nebs-bs-env-file3.path ];
     volumes = [
       "/mnt/data/bookstack_db:/config:rw"
     ];
