@@ -9,10 +9,10 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  age.secrets.nebs-bookstack-key.file = ./secrets/nebs-bookstack-key.age;
-  age.secrets.nebs-bookstack-key.mode = "0440";
-  age.secrets.nebs-bookstack-key.owner = "bookstack";
-  age.secrets.nebs-bookstack-key.group = "bookstack";
+  age.secrets.nebs-bookstack-env-file.file = ./secrets/nebs-bookstack-env-file.age;
+ 
+  
+  
   age.identityPaths = [ "/home/neb/.ssh/id_ed25519" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

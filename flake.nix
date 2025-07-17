@@ -19,7 +19,7 @@
         ./server/networking.nix
         agenix.nixosModules.default
         ({config, ...} : {
-          nebs-bookstack.enable = true;
+
         })
   
       ];
