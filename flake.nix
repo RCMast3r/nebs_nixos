@@ -16,6 +16,7 @@
         # so the old configuration file still takes effect
         ./configuration.nix
         ./server/services/bookstack.nix
+	./server/services/nginx.nix
         ./server/networking.nix
         agenix.nixosModules.default
         ({config, ...} : {
