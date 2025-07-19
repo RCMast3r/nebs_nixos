@@ -17,7 +17,7 @@
     
     "portainer-old.yeet" = {
       locations."/" = {
-        proxyPass = "http://192.168.86.24:9443";
+        proxyPass = "https://192.168.86.24:9443";
       };
     }; 
     "portainer.yeet" = {
@@ -28,7 +28,7 @@
     
     "qbit.yeet" = {
       locations."/" = {
-        proxyPass = "https://192.168.86.28:8081";
+        proxyPass = "http://192.168.86.28:8081";
       };
     };
     "tv.yeet" = {
