@@ -2,8 +2,19 @@
 
 {
   services.nginx.enable = true;
-
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "rcmast3r1@gmail.com";
+  };
   services.nginx.virtualHosts = {
+    "jammy.benhall.tech" = {
+      addSSL = true;
+      enableACME = true;
+      forceSSL = true;
+      localtions."/" = {
+        proxyPass = "http://192.168.86.28:8097";
+      };
+    };
     "books.yeet" = {
       locations."/" = {
         proxyPass = "http://192.168.86.28:8123";
