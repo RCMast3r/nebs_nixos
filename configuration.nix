@@ -64,6 +64,7 @@
   environment.systemPackages = with pkgs; [
     btrfs-progs
     git
+    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
