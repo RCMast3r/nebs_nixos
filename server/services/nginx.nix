@@ -8,10 +8,9 @@
   };
   services.nginx.virtualHosts = {
     "jammy.benhall.tech" = {
-      addSSL = true;
       enableACME = true;
       forceSSL = true;
-      localtions."/" = {
+      locations."/" = {
         proxyPass = "http://192.168.86.28:8097";
       };
     };
