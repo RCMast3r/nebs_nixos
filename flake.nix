@@ -18,6 +18,7 @@
         ./server/services/bookstack.nix
       	./server/services/nginx.nix
       	./server/services/prowlarr.nix
+      	./server/services/duckdns.nix
         ./server/networking.nix
         agenix.nixosModules.default
         ({config, ...} : {
