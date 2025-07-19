@@ -19,6 +19,7 @@
       	./server/services/nginx.nix
       	./server/services/prowlarr.nix
       	./server/services/duckdns.nix
+        ./server/services/code-server.nix
         ./server/networking.nix
         agenix.nixosModules.default
         ({config, ...} : {

@@ -2,6 +2,9 @@
 
 {
   services.nginx.enable = true;
+  services.nginx.recommendedGzipSettings = true;
+  services.nginx.recommendedOptimisation = true;
+  services.nginx.recommendedProxySettings = true;
   security.acme = {
     acceptTerms = true;
     defaults.email = "rcmast3r1@gmail.com";
@@ -61,6 +64,12 @@
     "prowlarr.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:9696";
+      };
+    };
+    "${builtins.toString config.services.code-server.proxyDomain}" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${builtins.toString config.services.code-server.port}";
+        proxyWebsockets = true;
       };
     };
   };
