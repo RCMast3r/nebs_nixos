@@ -7,4 +7,5 @@ in
   "nebs_ssh_key.age".publicKeys = users;
   "nebs-bs-env-file3.age".publicKeys = users;
   "duckdns-token.age".publicKeys = users;
+  "duckdns-domains.age".publicKeys = users;
 }

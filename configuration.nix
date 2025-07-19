@@ -11,8 +11,8 @@
       ./hardware-configuration.nix
     ];
   age.secrets.nebs-bs-env-file3.file = ./secrets/nebs-bs-env-file3.age;
- 
-  
+  age.secrets.duckdns-token.file = ./secrets/duckdns-token.age;
+  age.secrets.duckdns-domains.file = ./secrets/duckdns-domains.age;
   
   age.identityPaths = [ "/home/neb/.ssh/id_ed25519" ];
   # Bootloader.
