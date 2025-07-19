@@ -22,13 +22,13 @@
     }; 
     "portainer.yeet" = {
       locations."/" = {
-        proxyPass = "http://192.168.86.28:9443";
+        proxyPass = "https://192.168.86.28:9443";
       };
     };
     
     "qbit.yeet" = {
       locations."/" = {
-        proxyPass = "http://192.168.86.28:8081";
+        proxyPass = "https://192.168.86.28:8081";
       };
     };
     "tv.yeet" = {
