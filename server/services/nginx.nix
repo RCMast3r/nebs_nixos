@@ -48,6 +48,10 @@
         proxyPass = "http://localhost:6875";
       };
     };
-    
+    "prowlarr.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:9696";
+      };
+    };
   };
 }
