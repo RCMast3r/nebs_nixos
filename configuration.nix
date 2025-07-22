@@ -104,7 +104,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   fileSystems."/mnt/data" = {
-    device = "UUID=65f2c848-46e4-4855-b21d-e96619a5b6e2";
+    device = "UUID=72395080-ec8e-43ce-a59a-381bec4b1a86";
     fsType = "btrfs";
     options = [ "compress=zstd" ]; # Optional Btrfs options
   };
