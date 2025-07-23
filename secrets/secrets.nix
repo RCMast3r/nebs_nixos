@@ -4,8 +4,10 @@ let
   users = [ neb ben ];
 in 
 {
+  # nix run github:ryantm/agenix -- -e .age -i /home/neb/.ssh/id_ed25519
   "nebs_ssh_key.age".publicKeys = users;
   "nebs-bs-env-file3.age".publicKeys = users;
   "duckdns-token.age".publicKeys = users;
   "duckdns-domains.age".publicKeys = users;
+  "remotebuild-ssh-key.age".publicKeys = users;
 }

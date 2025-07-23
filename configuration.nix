@@ -13,8 +13,11 @@
   age.secrets.nebs-bs-env-file3.file = ./secrets/nebs-bs-env-file3.age;
   age.secrets.duckdns-token.file = ./secrets/duckdns-token.age;
   age.secrets.duckdns-domains.file = ./secrets/duckdns-domains.age;
+  age.secrets.nebs_ssh_key.file = ./secrets/nebs_ssh_key.age;
+  age.secrets.remotebuild-ssh-key.file = ./secrets/remotebuild-ssh-key.age;
   
   age.identityPaths = [ "/home/neb/.ssh/id_ed25519" ];
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -57,6 +60,7 @@
     description = "neb";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
+    # openssh.authorizedKeys.keyFiles = [ config.age.secrets.nebs_ssh_key.path ];
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -22,7 +22,7 @@
         proxyPass = "http://192.168.86.28:8123";
       };
     };
-    "movies.yeet" = {
+    "movies-old.yeet" = {
       locations."/" = {
         proxyPass = "http://192.168.86.28:7878";
       };
@@ -66,6 +66,12 @@
         proxyPass = "http://localhost:9696";
       };
     };
+    "movies-new.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:${builtins.toString config.services.radarr.settings.server.port}";
+      };
+    };
+    
     "${builtins.toString config.services.code-server.proxyDomain}" = {
       locations."/" = {
         proxyPass = "http://127.0.0.1:${builtins.toString config.services.code-server.port}";

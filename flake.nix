@@ -20,7 +20,10 @@
       	./server/services/prowlarr.nix
       	./server/services/duckdns.nix
         ./server/services/code-server.nix
+        ./server/services/radarr.nix
+        ./server/services/dns.nix
         ./server/networking.nix
+        # ./server/nix.nix
         agenix.nixosModules.default
         ({config, ...} : {
 
