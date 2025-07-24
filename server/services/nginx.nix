@@ -13,29 +13,14 @@
   services.nginx.recommendedProxySettings = true;
   
   services.nginx.virtualHosts = {
-    "jammy.benhall.tech" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://192.168.86.28:8097";
-      };
-    };
+    
+    
     "books.yeet" = {
       locations."/" = {
         proxyPass = "http://192.168.86.28:8123";
       };
     };
-    "movies-old.yeet" = {
-      locations."/" = {
-        proxyPass = "http://192.168.86.28:7878";
-      };
-    };
-    
-    "portainer-old.yeet" = {
-      locations."/" = {
-        proxyPass = "https://192.168.86.24:9443";
-      };
-    }; 
+
     "portainer.yeet" = {
       locations."/" = {
         proxyPass = "https://192.168.86.28:9443";
@@ -48,6 +33,7 @@
         proxyPass = "http://192.168.86.28:8989";
       };
     };
+
     "wg.yeet" = {
       locations."/" = {
         proxyPass = "http://192.168.86.28:51821";
@@ -65,17 +51,26 @@
         proxyPass = "http://localhost:9696";
       };
     };
-    "movies-new.yeet" = {
+    "movies.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:${builtins.toString config.services.radarr.settings.server.port}";
       };
     };
+    
     "qbit.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:8081";
       };
     };
-    
+
+    "jammy.benhall.tech" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:8097";
+      };
+    };
+
     "${builtins.toString config.services.code-server.proxyDomain}" = {
       locations."/" = {
         proxyPass = "http://127.0.0.1:${builtins.toString config.services.code-server.port}";

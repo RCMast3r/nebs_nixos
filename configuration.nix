@@ -16,6 +16,7 @@
   age.secrets.nebs_ssh_key.file = ./secrets/nebs_ssh_key.age;
   age.secrets.remotebuild-ssh-key.file = ./secrets/remotebuild-ssh-key.age;
   age.secrets.qbit-vpn-env.file = ./secrets/qbit-vpn-env.age;
+  age.secrets.unpackerr-env.file = ./secrets/unpackerr-env.age;
   
   age.identityPaths = [ "/home/neb/.ssh/id_ed25519" ];
   
@@ -70,6 +71,7 @@
     btrfs-progs
     git
     htop
+    intel-gpu-tools
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

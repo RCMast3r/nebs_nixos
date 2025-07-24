@@ -11,4 +11,5 @@ in
   "duckdns-domains.age".publicKeys = users;
   "remotebuild-ssh-key.age".publicKeys = users;
   "qbit-vpn-env.age".publicKeys = users;
+  "unpackerr-env.age".publicKeys = users;
 }

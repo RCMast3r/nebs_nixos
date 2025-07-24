@@ -1,0 +1,25 @@
+name: jellyfin
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    runtime: nvidia
+    group_add:
+      - '109' #render
+      - '44' #video
+    environment:
+      - JELLYFIN_CONFIG_DIR=/config
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mnt/data/jellyfin/config:/config
+      - /mnt/data/mass_storage/sonarr:/data/tvshows
+      - /mnt/data/mass_storage/radarr:/data/movies
+      - /mnt/data/mass_storage/lectures:/data/lectures
+      - /mnt/data/mass_storage/thisissynthwave:/data/synthwave
+    ports:
+      - 8097:8097
+      - 7360:7359/udp #optional
+      - 1901:1900/udp #optional
+    restart: unless-stopped

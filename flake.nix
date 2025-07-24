@@ -23,6 +23,8 @@
         ./server/services/radarr.nix
         ./server/services/dns.nix
         ./server/services/qbit_vpn.nix
+        ./server/services/unpackerr.nix
+        ./server/services/jellyfin.nix
         ./server/networking.nix
         # ./server/nix.nix
         agenix.nixosModules.default
