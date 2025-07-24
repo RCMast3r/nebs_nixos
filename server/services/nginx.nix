@@ -26,13 +26,6 @@
         proxyPass = "https://192.168.86.28:9443";
       };
     };
-    
-    
-    "tv.yeet" = {
-      locations."/" = {
-        proxyPass = "http://192.168.86.28:8989";
-      };
-    };
 
     "wg.yeet" = {
       locations."/" = {
@@ -60,6 +53,12 @@
     "qbit.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:8081";
+      };
+    };
+
+    "tv.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:8989";
       };
     };
 

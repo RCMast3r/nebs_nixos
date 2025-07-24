@@ -25,6 +25,7 @@
         ./server/services/qbit_vpn.nix
         ./server/services/unpackerr.nix
         ./server/services/jellyfin.nix
+        ./server/services/sonarr.nix
         ./server/networking.nix
         # ./server/nix.nix
         agenix.nixosModules.default

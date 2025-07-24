@@ -17,7 +17,7 @@
       "/mnt/data/jellyfin/config:/config:rw"
       "/mnt/data/mass_storage/lectures:/data/lectures:rw"
       "/mnt/data/radarr_storage:/data/movies:rw"
-      "/mnt/data/mass_storage/sonarr:/data/tvshows:rw"
+      "/mnt/data/sonarr_storage:/data/tvshows:rw"
       "/mnt/data/mass_storage/thisissynthwave:/data/synthwave:rw"
     ];
     ports = [
