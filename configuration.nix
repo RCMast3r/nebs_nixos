@@ -15,6 +15,7 @@
   age.secrets.duckdns-domains.file = ./secrets/duckdns-domains.age;
   age.secrets.nebs_ssh_key.file = ./secrets/nebs_ssh_key.age;
   age.secrets.remotebuild-ssh-key.file = ./secrets/remotebuild-ssh-key.age;
+  age.secrets.qbit-vpn-env.file = ./secrets/qbit-vpn-env.age;
   
   age.identityPaths = [ "/home/neb/.ssh/id_ed25519" ];
   

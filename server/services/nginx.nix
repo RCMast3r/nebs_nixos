@@ -1,14 +1,17 @@
 { config, pkgs, lib, ... }:
 
 {
-  services.nginx.enable = true;
-  services.nginx.recommendedGzipSettings = true;
-  services.nginx.recommendedOptimisation = true;
-  services.nginx.recommendedProxySettings = true;
+  
   security.acme = {
     acceptTerms = true;
     defaults.email = "rcmast3r1@gmail.com";
   };
+
+  services.nginx.enable = true;
+  services.nginx.recommendedGzipSettings = true;
+  services.nginx.recommendedOptimisation = true;
+  services.nginx.recommendedProxySettings = true;
+  
   services.nginx.virtualHosts = {
     "jammy.benhall.tech" = {
       enableACME = true;
@@ -39,11 +42,7 @@
       };
     };
     
-    "qbit.yeet" = {
-      locations."/" = {
-        proxyPass = "http://192.168.86.28:8081";
-      };
-    };
+    
     "tv.yeet" = {
       locations."/" = {
         proxyPass = "http://192.168.86.28:8989";
@@ -69,6 +68,11 @@
     "movies-new.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:${builtins.toString config.services.radarr.settings.server.port}";
+      };
+    };
+    "qbit.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:8081";
       };
     };
     

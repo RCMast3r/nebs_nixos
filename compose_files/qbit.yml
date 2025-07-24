@@ -1,0 +1,46 @@
+name: qbit
+services:
+  vpn:
+    container_name: vpn
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - VPN_SERVICE_PROVIDER=private internet access
+      - OPENVPN_USER=deleteme
+      - OPENVPN_PASSWORD=deleteme
+      - SERVER_REGIONS=US Atlanta
+      - FIREWALL_OUTBOUND_SUBNETS=192.168.86.0/24
+      - HTTPPROXY=on
+
+    ports:
+      - 8001:8000 # Remote Control VPN
+      - 8888:8888 # Tinyproxy
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+      - 8081:8081 # qbit
+      - 51000:51000 # qbit
+      - 51000:51000/udp # qbit
+    restart: "unless-stopped"
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8081
+    volumes:
+      - /mnt/data/qbt_config:/config
+      - /mnt/data/mass_storage/books_downloads:/books
+      - /mnt/data/mass_storage/media_server_tv:/downloads/tvdownloads
+      - /mnt/data/mass_storage/media_server_movies:/movies
+      - /mnt/data/mass_storage/qbit_downloads_migrated/:/media/externalboi/qbit_downloads_migrated
+    network_mode: 'service:vpn'
+    depends_on:
+      - vpn
+
+    restart: unless-stopped
