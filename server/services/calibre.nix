@@ -2,6 +2,7 @@
 {
   services.calibre-server = {
     enable = true;
+    # because this boi is not smart at all you have to creat the library before using this module: `calibredb --with-library /mnt/data/calibre_server list` fuck me i guess
     libraries = [
       "/mnt/data/calibre_library"
     ];
