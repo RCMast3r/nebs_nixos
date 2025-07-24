@@ -13,6 +13,7 @@
       "TZ" = "Etc/UTC";
     };
     devices = ["/dev/dri:/dev/dri/"];
+    
     volumes = [
       "/mnt/data/jellyfin/config:/config:rw"
       "/mnt/data/mass_storage/lectures:/data/lectures:rw"
@@ -20,6 +21,7 @@
       "/mnt/data/sonarr_storage:/data/tvshows:rw"
       "/mnt/data/mass_storage/thisissynthwave:/data/synthwave:rw"
     ];
+
     ports = [
       "8097:8097/tcp"
       "7360:7359/udp"

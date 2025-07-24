@@ -2,13 +2,12 @@
   description = "nebs nixos";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     agenix.url = "github:ryantm/agenix";
   };
 
   outputs = { self, nixpkgs, agenix, ... }@inputs: {
-    # Please replace my-nixos with your hostname
+
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -26,6 +25,7 @@
         ./server/services/unpackerr.nix
         ./server/services/jellyfin.nix
         ./server/services/sonarr.nix
+        ./server/services/calibre.nix
         ./server/networking.nix
         # ./server/nix.nix
         agenix.nixosModules.default

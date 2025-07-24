@@ -14,12 +14,7 @@
   
   services.nginx.virtualHosts = {
     
-    
-    "books.yeet" = {
-      locations."/" = {
-        proxyPass = "http://192.168.86.28:8123";
-      };
-    };
+
 
     "portainer.yeet" = {
       locations."/" = {
@@ -33,7 +28,6 @@
       };
     };
     
-
     "wiki.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:6875";
@@ -59,6 +53,18 @@
     "tv.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:8989";
+      };
+    };
+    
+    "books.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:${builtins.toString config.services.calibre-web.listen.port}";
+      };
+    };
+
+    "calibre.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:${builtins.toString config.services.calibre-server.port}";
       };
     };
 
