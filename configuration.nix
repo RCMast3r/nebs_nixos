@@ -62,7 +62,20 @@
     description = "neb";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
-    # openssh.authorizedKeys.keyFiles = [ config.age.secrets.nebs_ssh_key.path ];
+    openssh.authorizedKeys.keys = [ 
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMOtpIpzZ1PkFItVd2WWapfgIWAQ7ymuqAlYNpGgE+w5 rcmast3r1@gmail.com" 
+    ];
+  };
+  
+  users.groups.media = {
+    gid = 1234;
+  };
+
+  users.users.media = {
+    isNormalUser = true;
+    description = "media";
+    uid =  1234;
+    group = "media";
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -73,14 +86,6 @@
     htop
     intel-gpu-tools
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
@@ -94,8 +99,6 @@
       UseDns = true;
     };
   };
-
-  # Open ports in the firewall.
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -112,18 +115,36 @@
     options = [ "compress=zstd" ]; # Optional Btrfs options
   };
 
-  systemd.services."fix-permissions-mnt-data" = {
-    wantedBy = [ "local-fs.target" ];
-    after = [ "mnt-data.mount" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = [
-        "/run/current-system/sw/bin/chown neb:users /mnt/data"
-        "/run/current-system/sw/bin/chmod 755 /mnt/data"
-      ];
-    };
-  };
-  
+  system.activationScripts.setMediaOwnership.text = ''
+    echo "Fixing media folder ownership..."
+    chown -R :media /mnt/data/jellyfin
+    chown -R :media /mnt/data/radarr_storage
+    chown -R :media /mnt/data/sonarr_data
+    chown -R :media /mnt/data/sonarr_storage
+    chown -R :media /mnt/data/calibre_web_data
+    chown -R :media /mnt/data/calibre_library
+    chown -R :media /mnt/data/qbt_config
+    chown -R :media /mnt/data/mass_storage
+
+    chmod -R g+rwX /mnt/data/jellyfin
+    chmod -R g+rwX /mnt/data/radarr_storage
+    chmod -R g+rwX /mnt/data/sonarr_data
+    chmod -R g+rwX /mnt/data/sonarr_storage
+    chmod -R g+rwX /mnt/data/calibre_web_data
+    chmod -R g+rwX /mnt/data/calibre_library
+    chmod -R g+rwX /mnt/data/qbt_config
+    chmod -R g+rwX /mnt/data/mass_storage
+
+    find /mnt/data/jellyfin -type d -exec chmod g+s {} \;
+    find /mnt/data/radarr_storage -type d -exec chmod g+s {} \;
+    find /mnt/data/sonarr_data -type d -exec chmod g+s {} \;
+    find /mnt/data/sonarr_storage -type d -exec chmod g+s {} \;
+    find /mnt/data/calibre_web_data -type d -exec chmod g+s {} \;
+    find /mnt/data/calibre_library -type d -exec chmod g+s {} \;
+    find /mnt/data/qbt_config -type d -exec chmod g+s {} \;
+    find /mnt/data/mass_storage -type d -exec chmod g+s {} \;
+  '';
+
   programs.git = {
     enable = true;
     config = {

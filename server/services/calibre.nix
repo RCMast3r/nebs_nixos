@@ -9,15 +9,15 @@
     extraFlags = [
       "--enable-local-write"
     ];
-    group = "users";
-    user = "neb";
+    group = "media";
+    user = "media";
   };
   services.calibre-web = {
     enable = true;
     dataDir = "/mnt/data/calibre_web_data";
     options.enableBookUploading = true;
     options.enableBookConversion = true;
-    group = "users";
-    user = "neb";
+    group = "media";
+    user = "media";
   };
 }

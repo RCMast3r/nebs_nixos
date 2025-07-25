@@ -2,7 +2,8 @@
 {
   services.sonarr = {
     enable = true;
-    dataDir = "/mnt/data/sonarr_data";
-    group = "users";
+    dataDir = "/mnt/data/sonarr_storage";
+    group = "media";
+    user = "media";
   };
 }

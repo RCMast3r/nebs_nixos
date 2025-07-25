@@ -7,6 +7,8 @@
   virtualisation.oci-containers.containers."unpackerr" = {
     image = "golift/unpackerr";
     environment = {
+      "PUID" = "${builtins.toString config.users.users.media.uid}";
+      "PGID" = "${builtins.toString config.users.groups.media.gid}";
       "TZ" = "Etc/UTC";
       "UN_DEBUG" = "false";
       "UN_DIR_MODE" = "0755";

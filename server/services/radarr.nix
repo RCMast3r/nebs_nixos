@@ -3,6 +3,7 @@
   services.radarr = {
     enable = true;
     dataDir = "/mnt/data/radarr_storage";
-    group = "users";
+    group = "media";
+    user = "media";
   };
 }

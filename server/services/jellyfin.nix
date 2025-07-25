@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.3.1.
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -8,8 +8,8 @@
     image = "lscr.io/linuxserver/jellyfin:latest";
     environment = {
       "JELLYFIN_CONFIG_DIR" = "/config";
-      "PGID" = "1000";
-      "PUID" = "1000";
+      "PUID" = "${builtins.toString config.users.users.media.uid}";
+      "PGID" = "${builtins.toString config.users.groups.media.gid}";
       "TZ" = "Etc/UTC";
     };
     devices = ["/dev/dri:/dev/dri/"];

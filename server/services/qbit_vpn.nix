@@ -6,8 +6,8 @@
   virtualisation.oci-containers.containers."qbittorrent" = {
     image = "lscr.io/linuxserver/qbittorrent:latest";
     environment = {
-      "PGID" = "1000";
-      "PUID" = "1000";
+      "PUID" = "${builtins.toString config.users.users.media.uid}";
+      "PGID" = "${builtins.toString config.users.groups.media.gid}";
       "TZ" = "Etc/UTC";
       "WEBUI_PORT" = "8081";
     };

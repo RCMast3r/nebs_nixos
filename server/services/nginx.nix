@@ -13,8 +13,6 @@
   services.nginx.recommendedProxySettings = true;
   
   services.nginx.virtualHosts = {
-    
-
 
     "portainer.yeet" = {
       locations."/" = {
@@ -38,6 +36,7 @@
         proxyPass = "http://localhost:9696";
       };
     };
+    
     "movies.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:${builtins.toString config.services.radarr.settings.server.port}";
