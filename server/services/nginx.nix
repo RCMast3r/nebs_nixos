@@ -14,15 +14,15 @@
   
   services.nginx.virtualHosts = {
 
-    "portainer.yeet" = {
-      locations."/" = {
-        proxyPass = "https://192.168.86.28:9443";
-      };
-    };
+    # "portainer.yeet" = {
+    #   locations."/" = {
+    #     proxyPass = "https://192.168.86.28:9443";
+    #   };
+    # };
 
     "wg.yeet" = {
       locations."/" = {
-        proxyPass = "http://192.168.86.28:51821";
+        proxyPass = "http://localhost:51821";
       };
     };
     
@@ -31,6 +31,7 @@
         proxyPass = "http://localhost:6875";
       };
     };
+
     "prowlarr.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:9696";
@@ -64,6 +65,12 @@
     "calibre.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:${builtins.toString config.services.calibre-server.port}";
+      };
+    };
+
+    "tw.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:6030";
       };
     };
 

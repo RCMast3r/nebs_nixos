@@ -1,0 +1,15 @@
+name: twitch-auto-miner
+services:
+  miner:
+    image: rdavidoff/twitch-channel-points-miner-v2
+    stdin_open: true
+    tty: true
+    environment:
+      - TERM=xterm-256color
+    volumes:
+      - /mnt/data/twitch_channel_point_miner/analytics:/usr/src/app/analytics
+      - /mnt/data/twitch_channel_point_miner/cookies:/usr/src/app/cookies
+      - /mnt/data/twitch_channel_point_miner/logs:/usr/src/app/logs
+      - /mnt/data/twitch_channel_point_miner/run.py:/usr/src/app/run.py:ro
+    ports:
+      - "6030:5000"

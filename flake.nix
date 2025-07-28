@@ -26,7 +26,10 @@
         ./server/services/jellyfin.nix
         ./server/services/sonarr.nix
         ./server/services/calibre.nix
+        ./server/services/wg-easy.nix
+        ./server/services/twitch-auto-miner.nix
         ./server/networking.nix
+        
         # ./server/nix.nix
         agenix.nixosModules.default
         ({config, ...} : {

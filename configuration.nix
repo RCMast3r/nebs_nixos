@@ -17,6 +17,7 @@
   age.secrets.remotebuild-ssh-key.file = ./secrets/remotebuild-ssh-key.age;
   age.secrets.qbit-vpn-env.file = ./secrets/qbit-vpn-env.age;
   age.secrets.unpackerr-env.file = ./secrets/unpackerr-env.age;
+  age.secrets.wg-easy-env.file = ./secrets/wg-easy-env.age;
   
   age.identityPaths = [ "/home/neb/.ssh/id_ed25519" ];
   

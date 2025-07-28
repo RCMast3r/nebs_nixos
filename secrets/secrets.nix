@@ -12,4 +12,5 @@ in
   "remotebuild-ssh-key.age".publicKeys = users;
   "qbit-vpn-env.age".publicKeys = users;
   "unpackerr-env.age".publicKeys = users;
+  "wg-easy-env.age".publicKeys = users;
 }

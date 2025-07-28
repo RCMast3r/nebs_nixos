@@ -1,8 +1,8 @@
 {config, pkgs, ...}:
 {
     networking.networkmanager.enable = true;
-    networking.firewall.allowedTCPPorts = [ 22 53 6875 80 443 ];
-    networking.firewall.allowedUDPPorts = [ 53 ];
+    networking.firewall.allowedTCPPorts = [ 22 53 6875 80 443 51820 ];
+    networking.firewall.allowedUDPPorts = [ 53 51820 ];
     networking.interfaces.enp10s0.ipv4 = {
       addresses = [
         {
