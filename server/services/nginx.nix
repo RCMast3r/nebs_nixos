@@ -74,6 +74,12 @@
       };
     };
 
+    "files.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:3923";
+      };
+    };
+
     "jammy.benhall.tech" = {
       enableACME = true;
       forceSSL = true;

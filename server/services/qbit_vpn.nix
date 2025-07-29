@@ -26,6 +26,7 @@
       "--network=container:vpn"
     ];
   };
+
   systemd.services."docker-qbittorrent" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
@@ -40,6 +41,42 @@
       "docker-compose-qbit-root.target"
     ];
   };
+
+
+  virtualisation.oci-containers.containers."seedboxapi" = {
+    image = "myanonamouse/seedboxapi";
+    environment = {
+      "DEBUG" = "1";
+      "interval" = "1";
+    };
+    environmentFiles = [ config.age.secrets.mam-curl.path ];
+    volumes = [
+      "/mnt/data/mam_curl:/config:rw"
+    ];
+    user = "1001:1001";
+    log-driver = "journald";
+    dependsOn = [
+      "vpn"
+    ];
+    extraOptions = [
+      "--network=container:vpn"
+    ];
+  };
+  systemd.services."docker-seedboxapi" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
+    };
+    partOf = [
+      "docker-compose-qbit-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-qbit-root.target"
+    ];
+  };
+
   virtualisation.oci-containers.containers."vpn" = {
     image = "qmcgaw/gluetun";
     environment = {

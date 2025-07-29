@@ -4,9 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     agenix.url = "github:ryantm/agenix";
+    copyparty.url = "github:9001/copyparty";
   };
 
-  outputs = { self, nixpkgs, agenix, ... }@inputs: {
+  outputs = { self, nixpkgs, agenix, copyparty, ... }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -28,12 +29,16 @@
         ./server/services/calibre.nix
         ./server/services/wg-easy.nix
         ./server/services/twitch-auto-miner.nix
+        ./server/services/copyparty.nix
         ./server/networking.nix
+        ./server/nix.nix
         
         # ./server/nix.nix
         agenix.nixosModules.default
-        ({config, ...} : {
-
+        copyparty.nixosModules.default
+        ({config, pkgs, ...} : {
+          config.nixpkgs.overlays = [ copyparty.overlays.default ];
+          config.nebs-nix-server.enable = true;
         })
   
       ];

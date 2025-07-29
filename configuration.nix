@@ -14,12 +14,19 @@
   age.secrets.duckdns-token.file = ./secrets/duckdns-token.age;
   age.secrets.duckdns-domains.file = ./secrets/duckdns-domains.age;
   age.secrets.nebs_ssh_key.file = ./secrets/nebs_ssh_key.age;
-  age.secrets.remotebuild-ssh-key.file = ./secrets/remotebuild-ssh-key.age;
+  age.secrets.rb-ssh-key.file = ./secrets/rb-ssh-key.age;
   age.secrets.qbit-vpn-env.file = ./secrets/qbit-vpn-env.age;
   age.secrets.unpackerr-env.file = ./secrets/unpackerr-env.age;
   age.secrets.wg-easy-env.file = ./secrets/wg-easy-env.age;
   
+  age.secrets.copyparty-admin.file = ./secrets/copyparty-admin.age;
+  age.secrets.copyparty-admin.group = "wheel";
+  age.secrets.copyparty-admin.mode = "660";
+
+  age.secrets.mam-curl.file = ./secrets/mam-curl.age;
+
   age.identityPaths = [ "/home/neb/.ssh/id_ed25519" ];
+  
   
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -126,6 +133,7 @@
     chown -R :media /mnt/data/calibre_library
     chown -R :media /mnt/data/qbt_config
     chown -R :media /mnt/data/mass_storage
+    chown -R :media /mnt/data/fileserver
 
     chmod -R g+rwX /mnt/data/jellyfin
     chmod -R g+rwX /mnt/data/radarr_storage
@@ -135,6 +143,7 @@
     chmod -R g+rwX /mnt/data/calibre_library
     chmod -R g+rwX /mnt/data/qbt_config
     chmod -R g+rwX /mnt/data/mass_storage
+    chmod -R g+rwX /mnt/data/fileserver
 
     find /mnt/data/jellyfin -type d -exec chmod g+s {} \;
     find /mnt/data/radarr_storage -type d -exec chmod g+s {} \;
@@ -144,6 +153,7 @@
     find /mnt/data/calibre_library -type d -exec chmod g+s {} \;
     find /mnt/data/qbt_config -type d -exec chmod g+s {} \;
     find /mnt/data/mass_storage -type d -exec chmod g+s {} \;
+    find /mnt/data/fileserver -type d -exec chmod g+s {} \;
   '';
 
   programs.git = {

@@ -9,8 +9,10 @@ in
   "nebs-bs-env-file3.age".publicKeys = users;
   "duckdns-token.age".publicKeys = users;
   "duckdns-domains.age".publicKeys = users;
-  "remotebuild-ssh-key.age".publicKeys = users;
+  "rb-ssh-key.age".publicKeys = users;
   "qbit-vpn-env.age".publicKeys = users;
   "unpackerr-env.age".publicKeys = users;
   "wg-easy-env.age".publicKeys = users;
+  "copyparty-admin.age".publicKeys = users;
+  "mam-curl.age".publicKeys = users;
 }

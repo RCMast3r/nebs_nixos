@@ -6,7 +6,7 @@
     description = "Enable or disable my standard nix settings";
   };
 
-  options.nebs-nix-server.nix-users
+  
 
   config = lib.mkIf config.nebs-nix-server.enable {
     users.users.remotebuild = {
@@ -15,10 +15,13 @@
       createHome = false;
       group = "remotebuild";
 
-      openssh.authorizedKeys.keyFiles = [ config.age.secrets.remotebuild-ssh-key.path ];
+      openssh.authorizedKeys.keyFiles = [ ./key.pub ];
     
     };
 
-    nix.settings.trusted-users = [ "remotebuild" "root" ]
+    
+    users.groups.remotebuild = {};
+
+    nix.settings.trusted-users = [ "remotebuild" ];
   };
 }
