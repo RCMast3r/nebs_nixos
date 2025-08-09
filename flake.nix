@@ -30,6 +30,7 @@
         ./server/services/wg-easy.nix
         ./server/services/twitch-auto-miner.nix
         ./server/services/copyparty.nix
+        ./server/services/lazylibrarian.nix
         ./server/networking.nix
         ./server/nix.nix
         

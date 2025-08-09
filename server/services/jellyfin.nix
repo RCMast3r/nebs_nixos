@@ -31,6 +31,7 @@
     extraOptions = [
       "--network-alias=jellyfin"
       "--network=jellyfin_default"
+      "--group-add=303"
     ];
   };
   systemd.services."docker-jellyfin" = {

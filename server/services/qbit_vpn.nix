@@ -79,14 +79,19 @@
 
   virtualisation.oci-containers.containers."vpn" = {
     image = "qmcgaw/gluetun";
+    
     environment = {
       "FIREWALL_OUTBOUND_SUBNETS" = "192.168.86.0/24";
       "HTTPPROXY" = "on";
-      "SERVER_REGIONS" = "US Atlanta";
       "VPN_SERVICE_PROVIDER" = "private internet access";
+      "PORT_FORWARD_ONLY" = "true";
+      "PRIVATE_INTERNET_ACCESS_VPN_PORT_FORWARDING"="on";
+      "VPN_PORT_FORWARDING_UP_COMMAND"="/bin/sh -c 'sleep 5; wget -O- --retry-connrefused --post-data \"json={\"listen_port\":{{`{{PORTS}}`}}}\" http://127.0.0.1:8081/api/v2/app/setPreferences 2>&1'";
     };
+    
     # "OPENVPN_PASSWORD" = "deleteme";
     # "OPENVPN_USER" = "deleteme";
+    
     environmentFiles = [ config.age.secrets.qbit-vpn-env.path ];
     ports = [
       "8001:8000/tcp"

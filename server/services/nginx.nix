@@ -19,7 +19,11 @@
     #     proxyPass = "https://192.168.86.28:9443";
     #   };
     # };
-
+    "ll.yeet" = {
+      locations."/" = {
+        proxyPass = "http://localhost:5299";
+      };
+    };
     "wg.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:51821";
@@ -80,13 +84,12 @@
       };
     };
 
-    "jammy.benhall.tech" = {
-      enableACME = true;
-      forceSSL = true;
+    "jammy.yeet" = {
       locations."/" = {
         proxyPass = "http://localhost:8097";
       };
     };
+
 
     "${builtins.toString config.services.code-server.proxyDomain}" = {
       locations."/" = {

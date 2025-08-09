@@ -134,6 +134,8 @@
     chown -R :media /mnt/data/qbt_config
     chown -R :media /mnt/data/mass_storage
     chown -R :media /mnt/data/fileserver
+    chown -R :media /mnt/data/lazylibrarian
+    chown -R :media /mnt/data/ll_downloads
 
     chmod -R g+rwX /mnt/data/jellyfin
     chmod -R g+rwX /mnt/data/radarr_storage
@@ -144,6 +146,9 @@
     chmod -R g+rwX /mnt/data/qbt_config
     chmod -R g+rwX /mnt/data/mass_storage
     chmod -R g+rwX /mnt/data/fileserver
+    chmod -R g+rwX /mnt/data/lazylibrarian
+    chmod -R g+rwX /mnt/data/ll_downloads
+
 
     find /mnt/data/jellyfin -type d -exec chmod g+s {} \;
     find /mnt/data/radarr_storage -type d -exec chmod g+s {} \;
@@ -154,6 +159,8 @@
     find /mnt/data/qbt_config -type d -exec chmod g+s {} \;
     find /mnt/data/mass_storage -type d -exec chmod g+s {} \;
     find /mnt/data/fileserver -type d -exec chmod g+s {} \;
+    find /mnt/data/lazylibrarian -type d -exec chmod g+s {} \;
+    find /mnt/data/ll_downloads -type d -exec chmod g+s {} \;
   '';
 
   programs.git = {
